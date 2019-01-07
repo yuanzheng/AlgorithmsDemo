@@ -2,19 +2,18 @@
 
 public class RodCutting {
 
-	public int cutForBestPrice(int[] prices, int length) {
+    public int cutForBestPrice(int[] prices, int length) {
+        // Validations
+        if (prices == null || prices.length == 0) {
+            return 0;
+        }
 
-		// Validations
-		if (prices == null || prices.length == 0) {
-			return 0;
-		}
+        // Cannot find the prices for the piece of whole rod
+        if (length <=0 || length >= prices.length) {
+            return 0;
+        }
 
-		// Cannot find the prices for the piece of whole rod
-		if (length <=0 || length >= prices.length) {
-			return 0;
-		}
-
-		// Keep the best price for each part in different sizes (from 0 to 'length').
+        // Keep the best price for each part in different sizes (from 0 to 'length').
         int[] tmp = new int[length + 1];
 
         tmp[0] = 0;
@@ -33,13 +32,13 @@ public class RodCutting {
 
         return tmp[length];
 
-	}
+    }
 
 
-	public static void main(String[] args) {
-		RodCutting test1 = new RodCutting();
+    public static void main(String[] args) {
+        RodCutting test1 = new RodCutting();
 
-		int[] prices = {0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30};
+        int[] prices = {0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30};
         int length = 9;
         System.out.println("Rod cuttingm test1: " + length + " => " +
                 test1.cutForBestPrice(prices, length));
@@ -62,5 +61,6 @@ public class RodCutting {
         length = 11;
         System.out.println("Rod cutting test6: " + length + " => " +
                 test1.cutForBestPrice(prices, length));
-	}
+
+    }
 }
